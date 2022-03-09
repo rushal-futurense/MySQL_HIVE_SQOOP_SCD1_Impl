@@ -13,3 +13,8 @@ We follow a step-by-step process in achieving the solution for the above-mention
 3. Implement SCD-1 to keep the up-to-date data. 
 4. Load the data back into MySQL. 
 5. Create a backup table for reconciliation. 
+
+**NOTE:**
+Two shells are created to achiev this :
+1. ot.sh : One Time script to setup the structure required for the data to be loaded and processed
+2. daily.sh : Daily script to process the daily data coming in batches such that only latest info is maintained in the end table fro analysis
