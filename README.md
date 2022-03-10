@@ -17,6 +17,6 @@ We follow a step-by-step process in achieving the solution for the above-mention
 **NOTE:**
 Two shells are created to achiev this :
 1. ot.sh : One Time script to setup the structure required for the data to be loaded and processed
-2. daily.sh : Daily script to process the daily data coming in batches such that only latest info is maintained in the end table fro analysis
+2. daily.sh : Daily script to process the daily data coming in batches such that only latest info is maintained in the end table for analysis
 
 ![WhatsApp Image 2022-03-04 at 5 07 09 PM](https://user-images.githubusercontent.com/100192175/157570169-4b3b7f2a-667d-4263-a45b-1016795da8a5.jpeg)
