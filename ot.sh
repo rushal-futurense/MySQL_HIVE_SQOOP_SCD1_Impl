@@ -51,6 +51,30 @@ entry_month INTEGER,
 entry_day INTEGER
 );"
 
+mysql -u${MYSQL_USER} -p${MYSQL_PASS} -e "
+use project_1;
+create table if not exists data_hive_exp (
+custid INTEGER PRIMARY KEY,
+username VARCHAR(100),
+quote_count INTEGER,
+ip VARCHAR(30),
+entry_time VARCHAR(100),
+prp_1 INTEGER,
+prp_2 INTEGER,
+prp_3 INTEGER,
+ms INTEGER,
+http_type VARCHAR(10), 
+purchase_category VARCHAR(100),
+total_count INTEGER,
+purchase_sub_category VARCHAR(100),
+http_info VARCHAR(500),
+status_code VARCHAR(10),
+table_load_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+entry_year INTEGER,
+entry_month INTEGER,
+entry_day INTEGER
+);"
+
 sqoop job --create inc_project_id -- import \
 --connect jdbc:mysql://${IP_ADD}:${PORTNO}/${MYSQL_DB}?useSSL=False \
 --username ${MYSQL_USER} --password-file ${MYSQL_P_FILE} \
