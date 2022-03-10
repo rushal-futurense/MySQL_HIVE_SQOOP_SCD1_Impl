@@ -48,3 +48,13 @@ WHEN NOT MATCHED THEN
     INSERT VALUES(y.custid, y.username, y.quote_count, y.ip, y.entry_time, y.prp_1, y.prp_2, y.prp_3, y.ms, y.http_type, y.purchase_category, y.total_count, y.purchase_sub_category, y.http_info, y.status_code, y.table_load_date, y.entry_year, y.entry_month, y.entry_day);
 INSERT OVERWRITE LOCAL DIRECTORY '/home/saif/LFS/cohort_c9/project_1/test_p/datasets/hive_export/'ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT * FROM data_load_scd1;"
+
+mysql --local-infile=1 -u${MYSQL_USER} -p${MYSQL_PASS} -e "
+use project_1;
+truncate data_hive_exp;
+LOAD DATA LOCAL INFILE '/home/saif/LFS/cohort_c9/project_1/test_p/datasets/hive_export/*' 
+INTO TABLE data_import_staging 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'"
+
+ 
