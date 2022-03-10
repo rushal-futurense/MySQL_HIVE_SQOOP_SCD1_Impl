@@ -53,8 +53,13 @@ mysql --local-infile=1 -u${MYSQL_USER} -p${MYSQL_PASS} -e "
 use project_1;
 truncate data_hive_exp;
 LOAD DATA LOCAL INFILE '/home/saif/LFS/cohort_c9/project_1/test_p/datasets/hive_export/*' 
-INTO TABLE data_import_staging 
+INTO TABLE data_hive_exp  
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'"
 
- 
+mysql --local-infile=1 -u${MYSQL_USER} -p${MYSQL_PASS} -e "
+use project_1; 
+with e as (select count(distinct custid) as cnt from data_import_backup),
+d as (select count(distinct custid) as cnt from data_hive_exp)
+select abs(e.cnt-d.cnt) as ReconValue
+from e,d;
